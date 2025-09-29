@@ -1,2 +1,2 @@
-# eth_client_diversity
+# Ethereum Client Diversity
 Study on the state of Ethereum client diversity
