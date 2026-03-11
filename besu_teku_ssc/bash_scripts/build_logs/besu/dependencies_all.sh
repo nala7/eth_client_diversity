@@ -16,9 +16,22 @@
 
 # Analyzes the dependencies NOT taking into account version numbers
 
+# Version 26.1.0
+grep "\---" besu-26.1.0_dependencies_tree.txt |
+# grep -v "project " |
+cut -d "-" -f 4-7 | # extracts group:artifact:version
+grep -v "(*)" | # removes repeated dependencies
+sed 's/->.*$/ /p' | # conflict resolutions '->'
+sed -E 's/:[0-9]+\.[0-9]+.*$/ /g' | # removes detailed version numbers
+sed 's/[[:blank:]]*$//' | # trims railing paces
+grep -v "\---" | # removes all lines that don't contain '\---'
+sort -u > besu-26.1.0_dependencies_all.txt # sorts and removes duplicates
+
+echo -e "All dependencies 26.1.0: $(cat besu-26.1.0_dependencies_all.txt | wc -l)";
+
 # Version 25.1.0
 grep "\---" besu-25.1.0_dependencies_tree.txt |
-#grep -v "project " |
+# grep -v "project " |
 cut -d "-" -f 4-7 | # extracts group:artifact:version
 grep -v "(*)" | # removes repeated dependencies
 sed 's/->.*$/ /p' | # conflict resolutions '->'

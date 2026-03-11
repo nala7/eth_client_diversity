@@ -1,13 +1,27 @@
 # Analyzes the dependencies taking into account version numbers
 
 
+# Version 26.1.0
+grep "\---" teku-26.1.0_dependencies_tree.txt |
+grep -v "project " |
+cut -d "-" -f 4-7 |
+grep -v "(*)" |
+#sed 's/->.*$/ /p' |
+#sed -E 's/:[0-9]+\.[0-9]+.*$/ /g' |
+sed -E 's/(.*):[0-9]+\.[0-9]+[^ ]* -> ([0-9]+\.[0-9]+[^ ]*)/\1:\2/' | # removes detailed version numbers (keeps version on the right of the arrow, the highest version)
+sed 's/[[:blank:]]*$//' |
+grep -v "\---" |
+sort -u > teku-26.1.0_dependencies_all_gav.txt
+
+echo -e "All dependencies (with versions) 26.1.0: $(cat teku-26.1.0_dependencies_all_gav.txt | wc -l)";
+
 # Version 25.1.0
 grep "\---" teku-25.1.0_dependencies_tree.txt |
 grep -v "project " |
 cut -d "-" -f 4-7 |
 grep -v "(*)" |
 #sed 's/->.*$/ /p' |
-#sed -E 's/:[0-9]+\.[0-9]+.*$/ /g' |
+#sed -E 's/:[0-9]+\.[0-9]+.*$/ /g' |    
 sed -E 's/(.*):[0-9]+\.[0-9]+[^ ]* -> ([0-9]+\.[0-9]+[^ ]*)/\1:\2/' | # removes detailed version numbers (keeps version on the right of the arrow, the highest version)
 sed 's/[[:blank:]]*$//' |
 grep -v "\---" |

@@ -11,6 +11,11 @@
 
 #cd ../../bash_scripts/build_logs/besu
 #sdk use gradle 6.8.1
-cd ../../../nodes_src/besu-20.10.4
-gradle -q projects > besu-besu-20.10.4_projects_tree.txt
-mv besu-besu-20.10.4_projects_tree.txt ../../bash_scripts/build_logs/besu
+# cd ../../../nodes_src/besu-20.10.4
+# gradle -q projects > besu-besu-20.10.4_projects_tree.txt
+# mv besu-besu-20.10.4_projects_tree.txt ../../bash_scripts/build_logs/besu
+
+
+gradle -q projects > besu-besu-26.1.0_projects_tree.txt
+mv besu-besu-26.1.0_projects_tree.txt ../../bash_scripts/build_logs/besu
+

@@ -8,7 +8,7 @@ find_common_versioned_dependencies() {
     echo "Common versioned dependencies ${version}: $(wc -l < "$output_file")"
 }
 
-versions=("25.1.0" "24.1.0" "23.1.0" "22.1.0")
+versions=("26.1.0" "25.1.0" "24.1.0" "23.1.0" "22.1.0")
 
 for version in "${versions[@]}"; do
     find_common_versioned_dependencies "$version"

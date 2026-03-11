@@ -13,11 +13,12 @@ extract_direct_dependencies() {
 }
 
 # Run the function for each version
+extract_direct_dependencies "26.1.0"
 extract_direct_dependencies "25.1.0"
-extract_direct_dependencies "24.1.0"
-extract_direct_dependencies "23.1.0"
-extract_direct_dependencies "22.1.0"
-extract_direct_dependencies "21.10.6"
+# extract_direct_dependencies "24.1.0"
+# extract_direct_dependencies "23.1.0"
+# extract_direct_dependencies "22.1.0"
+# extract_direct_dependencies "21.10.6"
 
 
 ###### Count direct dependencies, see https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management
